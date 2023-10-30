@@ -55,4 +55,24 @@ describe('Teste dos Itens', () => {
 
         expect(livro.total).toBeCloseTo(85);
     })
+
+    it('Deve lançar erro se o desconto for igual a zero', () => {
+        function validaDesconto(){
+            const livro = new Livro();
+            livro.adicionaDesconto(0);
+            livro.calculaTotal();
+        }
+
+        expect(validaDesconto).toThrowError('Valor de desconto não informado');
+    })
+
+    it('Deve lançar erro se o valor for igual a zero', () => {
+        function validaValor(){
+            const livro = new Livro();
+            livro.adicionaValor(0);
+            livro.calculaTotal();
+        }
+
+        expect(validaValor).toThrowError('Valor do produto não informado');
+    })
 })
